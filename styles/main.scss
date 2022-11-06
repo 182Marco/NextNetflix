@@ -1,0 +1,10 @@
+@import './globals';
+@import './mixins';
+@import './colors';
+@import './typoghraphy';
+
+// pages
+@import '../pages/style.scss';
+
+//components
+@import '../components/style.scss';

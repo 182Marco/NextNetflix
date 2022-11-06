@@ -1,0 +1,10 @@
+.home {
+    padding: 40px 0 80px;
+    @include app-box();
+    button {
+      &:first-of-type{
+        margin-right: 10px;
+      }
+    }
+  }
+  

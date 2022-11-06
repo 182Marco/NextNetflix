@@ -1,0 +1,27 @@
+@mixin app-box() {
+    width: 92%;
+    margin: 0 auto;
+    @media screen and (max-width: 450px) {
+      width: calc(100% - 30px);
+    }
+  }
+  
+  @mixin center-of-relative() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @mixin flex($direction: row, $justify-content: center, $align-items: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+  }
+
+  @mixin font($size: 16px, $weight: 400, $color: #000) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+  }

@@ -1,0 +1,24 @@
+.header {
+    @include app-box();
+    height: 68px;
+    @include flex(row, flex-start);
+    nav, 
+    ul {
+      @include flex(row, flex-start);
+    }
+    ul {
+      list-style: none;
+      li {
+        &:not(:last-of-type) {
+          margin-right: $l-text;
+        }
+        a {
+          @include font($s-text, $default-w, $light-grey);
+          &.active {
+            @include font($s-text, $default-plus, $white);
+          }
+        }
+      }
+    }
+  }
+  

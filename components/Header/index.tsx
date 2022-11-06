@@ -1,12 +1,10 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import logo from "../public/img/logo.png"
+import logo from "../../public/img/logo.png"
 import Image from "next/image";
 
 export const Header = () => {
   const router = useRouter();
-
-  console.log(router.asPath);
 
   const isActive = (route: string) => route === router.asPath;
 

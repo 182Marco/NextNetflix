@@ -1,8 +1,8 @@
-import changeName from './changeName';
+import globalSettings from './all';
 import { combineReducers } from 'redux';
 
 const allReducers = combineReducers({
-  changeName,
+    globalSettings,
 });
 
 export default allReducers;

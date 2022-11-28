@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { getTrends } from "../Utils/apiCalls";
 import { MovieOrTvShow } from "../Utils/interfaces";
-import { en, it } from "../Utils/languages";
 import { useSelector, useDispatch } from "react-redux";
 import { IState } from "../redux/reducers/all";
 import { language as setLang } from "../redux/actions";
@@ -28,7 +27,7 @@ export default function Home({ tvTrends, movieTrends }: homePageProps) {
   };
 
   useEffect(() => {
-    if(window && language) upDateTrendsLang(language);
+    upDateTrendsLang(language);
   }, [language]);
 
   return (
@@ -36,14 +35,14 @@ export default function Home({ tvTrends, movieTrends }: homePageProps) {
       <Header />
       <div className="home">
         <button
-          disabled={language == "It"}
-          onClick={() => dispatch(setLang("It"))}
+          disabled={language == "it"}
+          onClick={() => dispatch(setLang("it"))}
         >
           Ita
         </button>
         <button
-          disabled={language == "En"}
-          onClick={() => dispatch(setLang("En"))}
+          disabled={language == "en"}
+          onClick={() => dispatch(setLang("en"))}
         >
           English
         </button>

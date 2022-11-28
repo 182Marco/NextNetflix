@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { getTrends } from "../Utils/apiCalls";
 import { MovieOrTvShow } from "../Utils/interfaces";
 import { en, it } from "../Utils/languages";
+import { useSelector, useDispatch } from 'react-redux';
 
 interface homePageProps {
   tvTrends: MovieOrTvShow[];
@@ -14,6 +15,11 @@ export default function Home({ tvTrends, movieTrends }: homePageProps) {
   const [tvTends, setTvTrends] = useState(tvTrends);
   const [movieTends, setMovieTrends] = useState(movieTrends);
 
+  // console.log(tvTrends, movieTrends)
+   const name = useSelector(state => state.changeName.name);
+
+  console.log(name)
+
   const upDateTrendsLang = async (language: string) => {
     setLang(language);
     const movieRes = await getTrends("movie", lang);
@@ -21,9 +27,6 @@ export default function Home({ tvTrends, movieTrends }: homePageProps) {
     const tvRes = await getTrends("tv", lang);
     setTvTrends(tvRes);
   };
-
-  console.log("tvTends: ", tvTends);
-  console.log("movieTends: ", movieTends);
 
   return (
     <>
@@ -52,3 +55,4 @@ export async function getServerSideProps() {
   }
   return { props };
 }
+

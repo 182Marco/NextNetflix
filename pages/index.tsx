@@ -12,7 +12,6 @@ interface homePageProps {
 }
 
 export default function Home({ tvTrends, movieTrends }: homePageProps) {
-  
   const [tvTends, setTvTrends] = useState(tvTrends);
   const [movieTends, setMovieTrends] = useState(movieTrends);
 
@@ -50,14 +49,12 @@ export default function Home({ tvTrends, movieTrends }: homePageProps) {
 }
 
 export async function getServerSideProps() {
-  let props: homePageProps = { tvTrends: [], movieTrends: [] };
-  try {
-    const movieRes = await getTrends("movie");
-    const tvRes = await getTrends("tv");
-    props.tvTrends = tvRes;
-    props.movieTrends = movieRes;
-  } catch (er) {
-    console.error(`getTrends api responded with an error: ${er}`);
-  }
-  return { props };
+  const movieRes = await getTrends("movie");
+  const tvRes = await getTrends("tv");
+  return {
+    props: {
+      tvTrends: tvRes,
+      movieTrends: movieRes,
+    },
+  };
 }

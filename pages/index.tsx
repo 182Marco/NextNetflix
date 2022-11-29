@@ -6,18 +6,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { IState } from "../redux/reducers/all";
 import { language as setLang } from "../redux/actions";
 
-interface homePageProps {
+export const Home = ({
+  tvTrends,
+  movieTrends,
+}: {
   tvTrends: MovieOrTvShow[];
   movieTrends: MovieOrTvShow[];
-}
+}) => {
 
-export default function Home({ tvTrends, movieTrends }: homePageProps) {
+  const dispatch = useDispatch();
   const [tvTends, setTvTrends] = useState(tvTrends);
   const [movieTends, setMovieTrends] = useState(movieTrends);
 
   console.log(tvTrends, movieTrends);
   const { language } = useSelector((state: IState) => state?.globalSettings);
-  const dispatch = useDispatch();
 
   const upDateTrends = async (lang: string) => {
     dispatch(setLang(lang));
@@ -47,6 +49,8 @@ export default function Home({ tvTrends, movieTrends }: homePageProps) {
     </>
   );
 }
+
+export default Home
 
 export async function getServerSideProps() {
   const movieRes = await getTrends("movie");

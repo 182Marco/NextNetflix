@@ -35,14 +35,14 @@ export default function Home({ tvTrends, movieTrends }: homePageProps) {
       <Header />
       <div className="home">
         <button
-          disabled={language == "it"}
-          onClick={() => dispatch(setLang("it"))}
+          disabled={language == "it-IT"}
+          onClick={() => dispatch(setLang("it-IT"))}
         >
           Ita
         </button>
         <button
-          disabled={language == "en"}
-          onClick={() => dispatch(setLang("en"))}
+          disabled={language == "en-US"}
+          onClick={() => dispatch(setLang("en-US"))}
         >
           English
         </button>

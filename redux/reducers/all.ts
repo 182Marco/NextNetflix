@@ -9,7 +9,7 @@ export interface Lang {
 } 
 
 const initialState : Lang= {
-    language: 'en',
+    language: 'en-US',
 };
   
   const globalSettings = (state = initialState, action: PayloadAction<string>) => {

@@ -13,10 +13,12 @@ const store = createStore(
 );
 
 
-export default function App({ Component, pageProps }: AppProps) {
+export const App = ({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
       <Component {...pageProps} />
     </Provider>
   );
 }
+
+export default App;

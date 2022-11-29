@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "../components/Header";
 import { getTrends } from "../Utils/apiCalls";
 import { MovieOrTvShow } from "../Utils/interfaces";
@@ -12,6 +12,7 @@ interface homePageProps {
 }
 
 export default function Home({ tvTrends, movieTrends }: homePageProps) {
+  
   const [tvTends, setTvTrends] = useState(tvTrends);
   const [movieTends, setMovieTrends] = useState(movieTrends);
 
@@ -19,16 +20,13 @@ export default function Home({ tvTrends, movieTrends }: homePageProps) {
   const { language } = useSelector((state: IState) => state?.globalSettings);
   const dispatch = useDispatch();
 
-  const upDateTrendsLang = async (lang: string) => {
+  const upDateTrends = async (lang: string) => {
+    dispatch(setLang(lang));
     const movieRes = await getTrends("movie", lang);
     setMovieTrends(movieRes);
     const tvRes = await getTrends("tv", lang);
     setTvTrends(tvRes);
   };
-
-  useEffect(() => {
-    upDateTrendsLang(language);
-  }, [language]);
 
   return (
     <>
@@ -36,13 +34,13 @@ export default function Home({ tvTrends, movieTrends }: homePageProps) {
       <div className="home">
         <button
           disabled={language == "it-IT"}
-          onClick={() => dispatch(setLang("it-IT"))}
+          onClick={() => upDateTrends("it-IT")}
         >
           Ita
         </button>
         <button
           disabled={language == "en-US"}
-          onClick={() => dispatch(setLang("en-US"))}
+          onClick={() => upDateTrends("en-US")}
         >
           English
         </button>

@@ -5,6 +5,7 @@ import { MovieOrTvShow } from "../Utils/interfaces";
 import { useSelector, useDispatch } from "react-redux";
 import { IState } from "../redux/reducers/all";
 import { language as setLang } from "../redux/actions";
+import { it, en } from "../Utils/languages";
 
 export const Home = ({
   tvTrends,
@@ -13,7 +14,7 @@ export const Home = ({
   tvTrends: MovieOrTvShow[];
   movieTrends: MovieOrTvShow[];
 }) => {
-
+  
   const dispatch = useDispatch();
   const [tvTends, setTvTrends] = useState(tvTrends);
   const [movieTends, setMovieTrends] = useState(movieTrends);
@@ -33,24 +34,18 @@ export const Home = ({
     <>
       <Header />
       <div className="home">
-        <button
-          disabled={language == "it-IT"}
-          onClick={() => upDateTrends("it-IT")}
-        >
+        <button disabled={language == it} onClick={() => upDateTrends(it)}>
           Ita
         </button>
-        <button
-          disabled={language == "en-US"}
-          onClick={() => upDateTrends("en-US")}
-        >
+        <button disabled={language == en} onClick={() => upDateTrends(en)}>
           English
         </button>
       </div>
     </>
   );
-}
+};
 
-export default Home
+export default Home;
 
 export async function getServerSideProps() {
   const movieRes = await getTrends("movie");
